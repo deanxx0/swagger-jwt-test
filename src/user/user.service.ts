@@ -15,7 +15,7 @@ export class UserService {
     return createdDoc.save();
   }
 
-  async findOne(userid: string): Promise<UserDocument> {
-    return this.userModel.findOne({ userid: userid }).exec();
+  async findOne(username: string): Promise<UserDocument> {
+    return this.userModel.findOne({ username: username }).exec();
   }
 }

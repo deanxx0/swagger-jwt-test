@@ -3,9 +3,9 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 @Schema({ timestamps: true })
 export class User {
   @Prop()
-  userid: string;
+  username: string;
   @Prop()
-  pw: string;
+  password: string;
 }
 
 export type UserDocument = User & Document;

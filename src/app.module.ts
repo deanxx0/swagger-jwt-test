@@ -4,9 +4,15 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { UserModule } from './user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [AuthModule, UsersModule, UserModule],
+  imports: [
+    MongooseModule.forRoot(`mongodb://db-admin:laon0118@10.101.0.44:27017/st?authSource=admin`),
+    AuthModule, 
+    UsersModule, 
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -14,17 +14,20 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
+    console.log(`Post auth/login!`);
     return this.authService.login(req.user);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
+    console.log(`Get profile!`);
     return req.user;
   }
 
   @Post('user')
   createUser(@Body() userDto: UserDto): Promise<UserDocument> {
+    console.log(`Post user!`);
     return this.userService.create(userDto);
   }
 }

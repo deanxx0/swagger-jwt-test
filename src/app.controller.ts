@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
@@ -16,7 +16,8 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   @ApiOperation({ summary: 'id,pw 인증', description: 'token 발행' })
-  @ApiCreatedResponse({ description: 'token 발행', type: User })
+  @ApiCreatedResponse({ description: 'token 발행'})
+  @ApiBody({ type: UserDto })
   async login(@Request() req) {
     console.log(`Post auth/login!`);
     return this.authService.login(req.user);
